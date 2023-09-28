@@ -1,13 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 int main(){
     // imprime o cabecalho do nosso jogo
-    printf("******************************************\n");
-    printf("* Bem vindo ao nosso jogo de adivinhacao *\n");
-    printf("******************************************\n");
+    printf("|========================================|\n");
+    printf("| Bem vindo ao nosso jogo de adivinhacao |\n");
+    printf("|========================================|\n");
 
-    int numero_secreto = 42;
+    int segundos = time(0);
+    srand(segundos);
+
+    int numero_grande = rand();
+    int numero_secreto = numero_grande % 100;
 
     int chute;
     int tentativas = 1;
@@ -17,13 +22,13 @@ int main(){
     while(1)
     {
         printf("Tentativa %d\n", tentativas);
+        printf("|==============================================|\n");
         printf("Qual e o seu chute? ");
-     
         scanf("%d", &chute);
-        printf("Seu chute foi %d \n", chute);
 
         if(chute < 0) {
             printf("Voce nao pode chutar numeros negativos!\n");
+            printf("|==============================================|\n");
             continue;
         }
 
@@ -31,16 +36,19 @@ int main(){
         int maior = (chute > numero_secreto);
 
         if (acertou) {
-            printf("Parabens!! voce acertou!\n"); 
+            printf("Parabens!! voce acertou!\n");
+            printf("|==============================================|\n"); 
             break;
         } 
        
         else if(maior) {
-            printf("Seu chute foi maior que o numero secreto..\n");
+            printf("Seu chute foi %d.. Maior que o numero secreto..\n", chute);
+            printf("|==============================================|\n");
         } 
 
         else {
-            printf("Seu chute foi menor que o numero secreto..\n");
+            printf("Seu chute foi %d.. Menor que o numero secreto..\n", chute);
+            printf("|==============================================|\n");
         }
            tentativas++;
                                     // abs() - converte números negativos para positivos
@@ -53,5 +61,6 @@ int main(){
     printf("****************\n");
      
     printf("Voce acertou em %d tentativas\n", tentativas);
+    printf("|==============================================|\n");
     printf("Total de pontos: %.1f\n", pontos);
 } 
