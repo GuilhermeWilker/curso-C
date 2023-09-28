@@ -1,5 +1,6 @@
 #include <stdio.h>
-// Assistir aula 3.06
+#include <stdlib.h>
+
 int main(){
     // imprime o cabecalho do nosso jogo
     printf("******************************************\n");
@@ -42,8 +43,8 @@ int main(){
             printf("Seu chute foi menor que o numero secreto..\n");
         }
            tentativas++;
-
-            double pontos_perdidos = (chute - numero_secreto) / 2.0;
+                                    // abs() - converte números negativos para positivos
+            double pontos_perdidos = abs(chute - numero_secreto) / (double)2; 
             pontos = pontos - pontos_perdidos;
     } 
 
