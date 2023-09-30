@@ -14,12 +14,33 @@ int main(){
     int numero_grande = rand();
     int numero_secreto = numero_grande % 100;
 
+    int acertou = 0;
     int chute;
     int tentativas = 1;
 
     double pontos = 1000;
 
-    while(1)
+    int nivel;
+    printf("Qual nível de dificuldade gostaria de jogar?\n");
+    printf("(1) Facil\n(2) Medio\n(3) Dificil\n\n");
+    printf("Digite sua opcao: ");
+    scanf("%d", &nivel);
+
+    int numero_tentativas;
+    switch (nivel)
+    {
+        case 1:
+            numero_tentativas = 20;
+            break;
+        case 2:
+            numero_tentativas = 12;
+            break;
+        default:
+            numero_tentativas = 6;
+            break;
+    }
+    
+    for(int i = 1; i <= numero_tentativas; i++)
     {
         printf("Tentativa %d\n", tentativas);
         printf("|==============================================|\n");
@@ -32,12 +53,10 @@ int main(){
             continue;
         }
 
-        int acertou = (chute == numero_secreto);
+        acertou = (chute == numero_secreto);
         int maior = (chute > numero_secreto);
 
         if (acertou) {
-            printf("Parabens!! voce acertou!\n");
-            printf("|==============================================|\n"); 
             break;
         } 
        
@@ -56,11 +75,22 @@ int main(){
             pontos = pontos - pontos_perdidos;
     } 
 
-    printf("****************\n");
     printf("* Fim de jogo! *\n");
-    printf("****************\n");
+
+    if(acertou){
+          printf("****************\n");
+          printf("* Voce ganhou! *\n");
+          printf("****************\n");
+
+        printf("Voce acertou em %d tentativas\n", tentativas);
+        printf("|==============================================|\n");
+        printf("Total de pontos: %.1f\n", pontos);
+    } else {
+        printf("|==============================================|\n");
+        printf("Voce perdeu, tente de novo! \n");
+    }
+
+    
      
-    printf("Voce acertou em %d tentativas\n", tentativas);
-    printf("|==============================================|\n");
-    printf("Total de pontos: %.1f\n", pontos);
+    
 } 
