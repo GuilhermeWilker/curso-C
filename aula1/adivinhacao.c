@@ -78,9 +78,9 @@ int main(){
     printf("* Fim de jogo! *\n");
 
     if(acertou){
-          printf("****************\n");
-          printf("* Voce ganhou! *\n");
-          printf("****************\n");
+        printf("****************\n");
+        printf("* Voce ganhou! *\n");
+        printf("****************\n");
 
         printf("Voce acertou em %d tentativas\n", tentativas);
         printf("|==============================================|\n");
@@ -89,8 +89,4 @@ int main(){
         printf("|==============================================|\n");
         printf("Voce perdeu, tente de novo! \n");
     }
-
-    
-     
-    
 } 
